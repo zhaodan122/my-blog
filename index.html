@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="./font.css">
+	</head>
+	<body>
+		<div class='ti1'>
+			<div class='ti2'>
+				<h2 class="title">THE BLOG</h2>
+			</div>
+			<div class='ti2'>
+				<span class='subtitle1'>POSTS</span>
+				<span class='subtitle2'>ABOUT US</span>			
+			</div>	
+		</div>
+		<div class='bo1'>
+			<ul class="bo11">
+
+			</ul>
+		</div>
+		<div class='pa1'>
+			<span>FIRST</span>
+			<span>PREV</span>
+			<span>12</span>
+			<span>13</span>
+			<span class='pa14'>14</span>
+			<span>15</span>
+			<span>16</span>
+			<span>NEXT</span>
+			<span>LAST</span>
+		</div>
+		<div class="fo1">
+			<span>2004 - 2019 The blog. All rights reserved.</span>
+		</div>
+	</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
+<script type="text/javascript">
+
+	$.ajax({
+		url: 'http://3.12.121.164/dashboard/site/api/api.php',
+		type: 'GET',
+		data: {'view': 'all'}
+		}).then((data, textStatus, jqXHR) => {	
+			var a = JSON.parse(data);
+			console.log(a);
+			for(var i = 0;i<a.length;i++){
+				$('.bo11').append("<li><div class='bo12'><div class='bo121'><div class='bo1211'><span>"+a[i][3]+"</span></div><div class='bo1212'><span>"+"Created "+a[i][7]+"</span><br /><span>"+"Updated "+a[i][8]+"</span></div><div class='bo1213'><div class='bo12131'><img src='./tag.png' alt=''  width='15' height='15'></div><div class='bo12132'><span>"+a[i][5]+"</span></div></div></div><div class='bo122'><div class='bo1221'><img src='"+a[i][6]+"' alt=''  width='50' height='50'></div><div class='bo1222'><span>"+a[i][0]+"</span><br /><span>"+a[i][1]+"</span><br /><span>"+a[i][2]+"</span></div></div></div><div class='bo13'><div class='bo131'><img src='./food.png' alt=''  width='150' height='68'></div><div class='bo132'><span>"+a[i][4]+"</span></div></div></li>");
+			}
+		}, (jqXHR, textStatus, errorThrown) => {
+	})
+</script>	
+</html>
